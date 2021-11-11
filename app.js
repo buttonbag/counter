@@ -6,7 +6,7 @@ const value = document.querySelector('#value');
 const btns = document.querySelectorAll('.btn');
 
 btns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    const logClick = (e) => {
         const styles = e.currentTarget.classList;
         if (styles.contains('decrease')) {
             count--;
@@ -25,6 +25,18 @@ btns.forEach((btn) => {
             value.style.color = "black"
         }
         value.textContent = count;
-    })
+    }
+    btn.addEventListener('click', logClick);
 });
 
+//keypress
+const logKey = (e) => {
+    if (e.code == 'ArrowUp') {
+        count++;
+    }
+    else if (e.code == 'ArrowDown') {
+        count--;
+    }
+    value.textContent = count;
+}
+document.addEventListener('keydown', logKey);
