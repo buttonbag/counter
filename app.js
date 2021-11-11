@@ -5,6 +5,17 @@ let count = 0;
 const value = document.querySelector('#value');
 const btns = document.querySelectorAll('.btn');
 
+
+//color change
+const colorChange = () => {
+    if (count > 0) {
+        value.style.color = "green"
+    } else if (count < 0) {
+        value.style.color = "red"
+    } else if (count === 0) {
+        value.style.color = "blue"
+    }
+}
 btns.forEach((btn) => {
     const logClick = (e) => {
         const styles = e.currentTarget.classList;
@@ -15,15 +26,7 @@ btns.forEach((btn) => {
         } else if (styles.contains('reset')) {
             count = 0;
         }
-        //color change
-        if (count > 0) {
-            value.style.color = "green"
-        }
-        else if (count < 0) {
-            value.style.color = "red"
-        } else if (count === 0) {
-            value.style.color = "black"
-        }
+        colorChange();
         value.textContent = count;
     }
     btn.addEventListener('click', logClick);
@@ -36,7 +39,10 @@ const logKey = (e) => {
     }
     else if (e.code == 'ArrowDown') {
         count--;
+    } else if (e.code == 'ArrowLeft' || e.code == 'ArrowRight') {
+        count = 0;
     }
+    colorChange();
     value.textContent = count;
 }
 document.addEventListener('keydown', logKey);
