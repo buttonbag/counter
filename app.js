@@ -36,8 +36,7 @@ btns.forEach((btn) => {
 const logKey = (e) => {
     if (e.code == 'ArrowUp') {
         count++;
-    }
-    else if (e.code == 'ArrowDown') {
+    } else if (e.code == 'ArrowDown') {
         count--;
     } else if (e.code == 'ArrowLeft' || e.code == 'ArrowRight') {
         count = 0;
